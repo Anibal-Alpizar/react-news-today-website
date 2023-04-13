@@ -1,4 +1,4 @@
-import ButtonAppBar from "./components/NavBar";
+import Body from "./components/Body";
 function App() {
   const url =
     "https://newsapi.org/v2/top-headlines?" +
@@ -10,6 +10,11 @@ function App() {
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
 
-  return <div> <ButtonAppBar /> </div>;}
+  return (
+    <div>
+      <Body />
+    </div>
+  );
+}
 
 export default App;
