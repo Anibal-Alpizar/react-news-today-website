@@ -1,11 +1,9 @@
-import Card from "./Card";
-import NavBar from "./NavBar";
+import Cards from "./Cards";
 
 function Body() {
   return (
-    <div>
-      <NavBar />
-      <Card />
+    <div style={{ backgroundColor: "#040B35" }}>
+      <Cards />
     </div>
   );
 }
