@@ -1,9 +1,9 @@
-import Cards from "./Cards";
+import Card from "./Card";
 
 function Body() {
   return (
     <div style={{ backgroundColor: "#040B35" }}>
-      <Cards />
+      <Card />
     </div>
   );
 }

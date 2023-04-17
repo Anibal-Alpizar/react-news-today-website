@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import CardDetail from "../components/CardDetail";
 
 interface Article {
   author: string;
@@ -10,7 +11,7 @@ interface Article {
   content: string;
 }
 
-function Card(): JSX.Element {
+function Card() {
   const [news, setNews] = useState<Article[]>([]);
 
   useEffect(() => {
@@ -24,11 +25,7 @@ function Card(): JSX.Element {
   return (
     <div className="text-white">
       <h1 className="text-center">Noticias</h1>
-      {news.map((article: Article) => (
-        <div key={article.title}>
-          <h1 className="text-center">{article.author}</h1>
-        </div>
-      ))}
+      <CardDetail news={news} />
     </div>
   );
 }
