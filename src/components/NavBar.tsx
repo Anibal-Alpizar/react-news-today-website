@@ -1,4 +1,5 @@
-import { styled, alpha } from "@mui/material/styles";
+import { useState } from "react";
+import { alpha, styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -7,6 +8,10 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,6 +56,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuOpen = () => {
+    setMenuOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#040B35" }}>
@@ -61,6 +76,7 @@ export default function NavBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={handleMenuOpen}
           >
             <MenuIcon />
           </IconButton>
@@ -83,6 +99,67 @@ export default function NavBar() {
           </Search>
         </Toolbar>
       </AppBar>
+      <Drawer
+        anchor="left"
+        open={menuOpen}
+        onClose={handleMenuClose}
+        sx={{
+          "& .MuiDrawer-paper": {
+            backgroundColor: "#0a1929",
+            width: "240px",
+            padding: "20px",
+          },
+        }}
+      >
+        <List
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          <ListItem button>
+            <ListItemText
+              primary="Home"
+              sx={{
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#37474F",
+                  color: "#0a1929",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </ListItem>
+          <ListItem button>
+            <ListItemText
+              primary="About"
+              sx={{
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#37474F",
+                  color: "#0a1929",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </ListItem>
+          <ListItem button>
+            <ListItemText
+              primary="Contact"
+              sx={{
+                color: "#fff",
+                "&:hover": {
+                  backgroundColor: "#37474F",
+                  color: "#0a1929",
+                  borderRadius: "5px",
+                },
+              }}
+            />
+          </ListItem>
+        </List>
+      </Drawer>
     </Box>
   );
 }
